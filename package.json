@@ -1,11 +1,13 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
+  "main": "main.js",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c --bundleConfigAsCjs", 
     "dev": "rollup -c -w --bundleConfigAsCjs",
-    "start": "sirv public --host --port 5000",
-    "lint": "npx standard --fix && npx standard --parser svelte-eslint-parser --plugin svelte '**/*.svelte' --fix"
+    "start": "electron .",
+    "lint": "npx standard --fix && npx standard --parser svelte-eslint-parser --plugin svelte '**/*.svelte' --fix",
+    "electron:build": "electron-builder"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "<7",
@@ -16,6 +18,8 @@
     "@rollup/plugin-terser": "^0.4.4",
     "bulma": "<1",
     "compare-versions": "^6.1.1",
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8",
     "eslint-plugin-svelte": "^2.46.1",
     "mdi-svelte": "^1.1.2",
     "obs-websocket-js": "^5.0.1",
@@ -31,5 +35,28 @@
   },
   "dependencies": {
     "sirv-cli": "^3"
+  },
+  "build": {
+    "appId": "com.example.svelteapp",
+    "productName": "SvelteApp", 
+    "files": [
+      "public/**/*",
+      "main.js"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png"
+    }
   }
 }
