@@ -10,7 +10,7 @@
     "electron:build": "electron-builder"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "<7",
+    "@fullhuman/postcss-purgecss": "<8",
     "@mdi/js": "^7.4.47",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-html": "^1.1.0",
